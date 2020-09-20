@@ -1,6 +1,6 @@
 {
     "name": "weatherbit",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "description": "SparkFun weatherbit",
     "license": "MIT",
     "dependencies": {
@@ -11,9 +11,7 @@
         "weatherbit.ts",
         "weatherbit.cpp",
         "shims.d.ts",
-        "enums.d.ts",
-        "_locales/fr/weatherbit-strings.json",
-        "_locales/fr/weatherbit-jsdoc-strings.json"
+        "enums.d.ts"
     ],
     "testFiles": [
         "tests.ts"
