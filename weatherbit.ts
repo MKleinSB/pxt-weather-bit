@@ -176,31 +176,9 @@ namespace weatherbit {
     export function startWindMonitoring(): void {
         if (windMonitorStarted) return;
 
-        pins.setPull(DigitalPin.P8, PinPullMode.PullUp)
+        
 
-        // Watch pin 8 for a high pulse and send an event
-        pins.onPulsed(DigitalPin.P8, PulseValue.High, () => {
-            control.raiseEvent(
-                EventBusSource.MICROBIT_ID_IO_P8,
-                EventBusValue.MICROBIT_PIN_EVT_RISE
-            )
-        })
-
-        // Register event handler for a pin 8 high pulse
-        control.onEvent(EventBusSource.MICROBIT_ID_IO_P8, EventBusValue.MICROBIT_PIN_EVT_RISE, () => {
-            numWindTurns++
-        })
-
-        // Update MPH value every 2 seconds
-        control.inBackground(() => {
-            while (true) {
-                basic.pause(2000)
-                windMPH = (numWindTurns / 2) / (1492 / 1000)
-                numWindTurns = 0
-            }
-        })
-
-        windMonitorStarted = true;
+     
     }
 
     /***************************************************************************************
@@ -388,11 +366,7 @@ namespace weatherbit {
     //% weight=11 blockGap=8 blockId="weatherbit_soilMoisture" block="soil moisture"
     export function soilMoisture(): number {
         let soilMoisture = 0
-        pins.digitalWritePin(DigitalPin.P16, 1)
-        basic.pause(10)
-        soilMoisture = pins.analogReadPin(AnalogPin.P0)
-        basic.pause(1000)
-        pins.digitalWritePin(DigitalPin.P16, 0)
+        
         return soilMoisture
     }
     /**
